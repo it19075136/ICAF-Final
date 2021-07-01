@@ -22,18 +22,19 @@ class WorkshopList extends Component {
         console.log(this.props.workshops)
         console.log(this.props.conferences)
         return (
-            <div className="body">
+            <div>
                 <center><h2>ALL WORSHOPS</h2></center>
                 {this.props.workshops && this.props.conferences.length !=0 ? this.props.workshops.map(workshop => {
                     return (
-                        <div className="container mt-5">
+                        <div className="container mt-3">
                             <div className="card">
                                 <div className="row">
-                                    <div className="col-md-2">
+                                    <div className="col-md-3">
                                         <img src={workshop.flyerURL} className="img-fluid" />
                                     </div>
                                     <div className="col-md-8">
-                                        <h2 className="card-title mt-2">{workshop.workshopName} - {this.props.conferences.filter(conf => conf._id == workshop.conferenceId)[0].conferenceName}</h2>
+                                        <h2 classsName="card-title mt-2">Conference -{this.props.conferences != 0 ? this.props.conferences.filter(conf => conf._id == workshop.conferenceId)[0].conferenceName : <strong>Canceled!</strong>} </h2>
+                                        <h3 className="card-title mt-2">Workshop - {workshop.workshopName} </h3>
                                         <p>{workshop.workshopDescription}</p>
                                         {/* <h5 class="card-title">Speakers</h5> */}
                                         {/* {workshop}

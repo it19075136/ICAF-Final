@@ -21,7 +21,7 @@ export const MenuItems = [
     },
     {
         title: 'Workshops',
-        url:'/workshops',
+        url:'/viewWorkshops',
         cName: 'nav-links'
     },
     {
