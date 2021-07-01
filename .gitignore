@@ -1,0 +1,4 @@
+/Rest-service/node_modules
+/webApp/node_modules
+/webApp/.parcel-cache
+/webApp/dist

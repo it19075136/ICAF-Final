@@ -1,0 +1,30 @@
+.body{
+    position: relative;
+    margin-left: 20%;
+}
+
+.card-width{
+    width: 50% !important;
+}
+
+.container-column-custom{
+    /* background-color: aqua !important; */
+    display: flex !important;
+    justify-content: center !important;
+    /* border: solid 1px black !important; */
+}
+
+.container-row-custom{
+    margin-top: 25px !important;
+    margin-bottom: 15px !important;
+}
+
+.card-text-style{
+    font-size: 83px !important;
+    color: rgb(204, 121, 13) !important;
+    align-items: center;
+}
+
+.modal-style-custom{
+   
+}

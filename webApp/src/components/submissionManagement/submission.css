@@ -1,0 +1,9 @@
+.main{
+    margin-left: auto;
+    width: auto;
+}
+
+.actions:hover{
+    cursor: pointer;
+    color: #6d76f7;
+}

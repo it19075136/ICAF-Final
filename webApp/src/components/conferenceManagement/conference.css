@@ -1,0 +1,15 @@
+.edit-table{
+    overflow-x:auto;
+}
+
+.edit-table table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+  
+.edit-table th, td {
+    text-align: left;
+    padding: 8px;
+  }

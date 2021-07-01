@@ -1,0 +1,11 @@
+.sideSection{
+    position: absolute;
+    width: 20%;
+    height: max-content !important;
+    background: #6d76f7;
+    color: #fff;
+}
+
+.select-nav{
+    background: #000;
+}
