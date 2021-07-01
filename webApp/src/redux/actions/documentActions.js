@@ -10,7 +10,7 @@ export const addDocuments = (data) => dispatch => {
                 type: ADD_DOCUMENTS,
                 payload: data
             })
-            resolve(data)
+            resolve(res.data)
         }).catch((err) => {
             console.log(err);
             resolve(err)

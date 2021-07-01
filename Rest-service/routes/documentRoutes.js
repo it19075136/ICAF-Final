@@ -5,13 +5,13 @@ const {addDocument,updateDocument,deleteDocument,getDoucmentByUserId,getAllDocum
 
 router.post('/', async (req,res)=>{
 
-
     addDocument(req.body).then((newDoc)=>{
-        newDoc._id ? res.json(newDoc) : res.status(400).json(newDoc);
+        res.json(newDoc);
     }).catch((err)=>{
-        res.status(500).json(err);
+        res.status(err);
     })
 });
+
 router.post('/update/:id', (req,res)=>{
 
     updateDocument(req.body,req.params.id).then((doc)=>{
