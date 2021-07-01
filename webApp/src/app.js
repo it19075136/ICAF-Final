@@ -24,6 +24,7 @@ import EditConferenceForm from './components/conferenceManagement/EditConference
 import userProfile from './components/userProfileManagement/userProfile';
 import LandPage from './layouts/LandPage';
 import WebNavbar from './layouts/WebNavbar'
+import viewWorkshop from './components/workshopManagement/viewWorkshop';
 
 export default function app(){
     useEffect(() => {
@@ -54,7 +55,8 @@ export default function app(){
                 <Route exact path="/mySubmissions" component={DocumentList} />
 
                 <Route exact path="/workshop/add" component={AddWorkshopForm} />
-                <Route exact path="/workshops" component={WorkshopList} />
+                <Route exact path="/workshops" component={viewWorkshop} />
+                <Route exact path="/viewWorkshops" component={WorkshopList} />
                 <Route exact path="/conference/add" component={AddConferenceForm}/>
                 <Route exact path="/document/submit" component={SubmitDocumet} />
                 <Route exact path="/conferences" component={EditConferenceForm}/>

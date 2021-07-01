@@ -1,4 +1,4 @@
-import { ADD_WORKSHOP, GET_ALL_WORKSHOPS , UPDATE_WORKSHOP } from "../constants";
+import { ADD_WORKSHOP, GET_ALL_WORKSHOPS , UPDATE_WORKSHOP, UPDATE_WORKSHOPBY_ID, DELETE_WORKSHOP } from "../constants";
 
 const initstate = {
     workshops: [],
@@ -22,6 +22,16 @@ export default function (state = initstate, action){
                 ...state,
                 updateWorkshop : action.payload
             }
+        case UPDATE_WORKSHOPBY_ID:
+            return{
+                ...state,
+                workshops: [...state.workshops.filter(workshop => workshop._id != action.payload._id), action.payload]
+            }
+        case DELETE_WORKSHOP:
+        return{
+            ...state,
+            workshops: state.workshops.filter(workshop => workshop._id != action.payload)
+        }
         default:
             return state;
     }
