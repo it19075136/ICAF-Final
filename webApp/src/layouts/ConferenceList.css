@@ -6,7 +6,7 @@ html {
 }
 
 body {
-    text-align: center;
+    /* text-align: center; */
     font      : normal 16px "VT323", Verdana, Geneva, sans-serif;
     margin : 0;
     padding: 0;

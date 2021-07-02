@@ -101,7 +101,7 @@ class viewWorkshop extends Component {
                                     <td>{workshop.workshopDescription}</td>
                                     <td>{workshop.resourcePersons.map(person => {
                                         return (
-                                            <div> {this.props.admin.filter(user => user._id == person._id)[0].name}</div>
+                                            <div> {this.props.admin.find(user => user._id == person).name}</div>
                                         )
                                     })}</td>
                                     <td>{this.props.conferences != 0 ? this.props.conferences.filter(conf => conf._id == workshop.conferenceId)[0].conferenceName : <strong>No conference Selected</strong>}</td>
