@@ -75,10 +75,9 @@ router.delete('/:id', (req, res) => {
 router.post('/update/:id', (req, res) => {
 
 
-    req.body._id = req.params.id;
  console.log('in router post')
  console.log(req.body)
-    updateUserById(req.body)
+    updateUserById(req.params.id,req.body)
         .then((user) => {
             console.log('in router post in then')
             const token = jsonwebtoken.sign({
