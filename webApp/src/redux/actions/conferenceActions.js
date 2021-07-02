@@ -2,7 +2,7 @@ import axios from 'axios';
 import { GET_ALL_CONFERENCE, EDIT_CONFERENCE, ADD_CONFERENCE, DELETE_CONFERENCE } from '../constants';
 
 export const getAllConference = () => dispatch => {
-    axios.get('http://localhost:5000/conference')
+    axios.get('https://icaf-rest.herokuapp.com/conference')
         .then(res => {
             dispatch({
                 type: GET_ALL_CONFERENCE,
@@ -13,7 +13,7 @@ export const getAllConference = () => dispatch => {
 
 export const addConference = (payload) => dispatch => {
     return new Promise((resolve, reject) => {
-        axios.post('http://localhost:5000/conference', payload)
+        axios.post('https://icaf-rest.herokuapp.com/conference', payload)
             .then(res => {
                 if (res.status == 200) {
                     dispatch({
@@ -31,7 +31,7 @@ export const addConference = (payload) => dispatch => {
 
 export const editConference = (id, payload) => dispatch => {
     return new Promise((resolve, reject) => {
-        axios.put(`http://localhost:5000/conference/${id}`, payload)
+        axios.put(`https://icaf-rest.herokuapp.com/conference/${id}`, payload)
             .then(res => {
                 if (res.status == 200) {
                     dispatch({
@@ -49,7 +49,7 @@ export const editConference = (id, payload) => dispatch => {
 
 export const deleteConference = (id) => dispatch => {
     return new Promise((resolve, reject) => {
-        axios.delete(`http://localhost:5000/conference/${id}`).then((res) => {
+        axios.delete(`https://icaf-rest.herokuapp.com/conference/${id}`).then((res) => {
             if (res.status == 200) {
                 dispatch({
                     type: DELETE_CONFERENCE,

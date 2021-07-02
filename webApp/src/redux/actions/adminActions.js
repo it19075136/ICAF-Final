@@ -7,7 +7,7 @@ const GET_ALL_USERS = "GET_ALL_USERS";
 
 
 export const getAllDocuments = () => dispatch => {
-    axios.get('http://localhost:5000/document/')
+    axios.get('https://icaf-rest.herokuapp.com/document/')
     .then(res => {
         dispatch({
             type : GET_ALL_DOCUMENTS,
@@ -19,7 +19,7 @@ export const getAllDocuments = () => dispatch => {
 export function postDocumentApprove(values) {
     console.log('postDocumentApprove values: ', values);
     return (dispatch) => {
-        axios.post(`http://localhost:5000/document/update/isApprove/${values.id}`, values)
+        axios.post(`https://icaf-rest.herokuapp.com/document/update/isApprove/${values.id}`, values)
             .then(res => {
                 dispatch({
                     type: UPDATE_DOCUMENT_APPROVE,
@@ -41,7 +41,7 @@ export function postDocumentApprove(values) {
 
 export function getAllUsers(){
     return (dispatch) => {
-        axios.get(`http://localhost:5000/user/`)
+        axios.get(`https://icaf-rest.herokuapp.com/user/`)
         .then(res => {
             dispatch({
                 type : GET_ALL_USERS,
