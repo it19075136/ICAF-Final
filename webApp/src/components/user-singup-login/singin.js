@@ -4,6 +4,7 @@ import { Button, Form, Alert, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { findUser } from '../../redux/actions/singinActions'
 import '../admin.css'
+import '../documentManagement/document.css';
 class singin extends Component {
     state = {
         user: {
@@ -88,8 +89,9 @@ class singin extends Component {
             })
         }
         return (
+            <div className="main-form">
             <div className="body">
-                <Form >
+                <Form  className="container">
                     {this.state.alert.open ? <Alert key="1" variant="success" className="container">
                         {this.state.alert.text}
                     </Alert> : (null)}
@@ -133,6 +135,7 @@ class singin extends Component {
                         </Col>
                     </Form.Group>
                 </Form>
+            </div>
             </div>
         )
     }
