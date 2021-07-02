@@ -5,9 +5,9 @@
 
 .card-width{
     width: 50% !important;
-    /* min-height: fit-content !important;
-    height: fit-content !important;
-    max-height: fit-content !important; */
+    min-height: 350px !important;
+    height: 350px !important;
+    max-height: 350px !important;
     background-color: #c1d9d4 !important;
 }
 

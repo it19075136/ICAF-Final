@@ -103,6 +103,7 @@ class adminDashboard extends Component {
         let workshopArrayPending = workshopArray.filter((e) => {
             return e.type == 'W_PROPOSAL' && e.status == 'PENDING'
         })
+        console.log('workshopArrayPending: ', workshopArrayPending);
 
         let workshopArrayApproved = workshopArray.filter((e) => {
             return e.type == 'W_PROPOSAL' && e.status == 'APPROVED'
@@ -198,11 +199,11 @@ class adminDashboard extends Component {
                                     <Card.Header> Workshop Proposals</Card.Header>
                                     <Card.Body>
                                         <Card.Title>Pending</Card.Title>
-                                        <div className="card-text-style">
+                                        <Card.Text className="card-text-style">
                                             {
                                                 workshopArrayPending.length
                                             }
-                                        </div>
+                                        </Card.Text>
                                         <Button variant="primary" onClick={() => this.setShow(true, workshopArrayPending, 'W_PROPOSAL', 'PENDING')}>View Documents</Button>
                                     </Card.Body>
                                     {/* <Card.Footer className="text-muted">2 days ago</Card.Footer> */}
