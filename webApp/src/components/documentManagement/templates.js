@@ -6,6 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Download, FileWord, XLg } from 'react-bootstrap-icons';
 import { Modal } from 'react-bootstrap';
+import { EyeFill } from 'react-bootstrap-icons';
 import FilePreviewer from 'react-file-previewer';
 import { connect } from 'react-redux';
 import { getAllDocuments } from '../../redux/actions/documentActions'
@@ -54,7 +55,9 @@ class templates extends Component {
                         </IconButton>
                       }
                       title={document.type == "TEMPLATE_RESEARCH" ? "Research Template" : "Proposal Template"}
-                      subheader={document.createdAt.split('T')[0]}
+                      subheader={
+                        "Published Date: " + document.createdAt.split("T")[0]
+                      }
                     />
                     <FileWord size={XLg} />
                     <CardActions disableSpacing>
@@ -63,7 +66,8 @@ class templates extends Component {
                       </IconButton>
                       <IconButton
                         onClick={() => this.SetShow(true, document.fileUrl)}
-                      >View File</IconButton>
+                      >                          <EyeFill />
+                      </IconButton>
                     </CardActions>
                     <Modal
                       show={this.state.show}

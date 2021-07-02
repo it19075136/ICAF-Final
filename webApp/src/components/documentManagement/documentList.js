@@ -4,7 +4,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { Download, FileWord, XLg } from 'react-bootstrap-icons';
+import { Download, FileWord, XLg, EyeFill } from 'react-bootstrap-icons';
 import { Badge, Modal, Button } from 'react-bootstrap';
 import FilePreviewer from 'react-file-previewer';
 import { connect } from 'react-redux';
@@ -322,9 +322,9 @@ class templates extends Component {
                         }
                       />
                       <FileWord size={XLg} />
-                      <h1 classname="center">
-                        <Badge bg="secondary">{document.status}</Badge>
-                      </h1>
+                      <h3 classname="center">
+                        <Badge variant={document.status == "PENDING" ? "Warning" : "Primary"}>{document.status}</Badge>
+                      </h3>
                       <CardActions disableSpacing>
                         <IconButton aria-label="download">
                           <a href={document.fileUrl} target="_blank" download>
@@ -334,9 +334,9 @@ class templates extends Component {
                         <IconButton
                           onClick={() => this.SetShow(true, document.fileUrl)}
                         >
-                          View File
+                          <EyeFill />
                         </IconButton>
-                        <IconButton onClick={() => this.showPayModal(true)} >Pay Now</IconButton>
+                        {document.status == "APPROVED" && document.type == "RESEARCH" ? <Button className="btn btn-primary" onClick={() => this.showPayModal(true)} >Pay</Button>:null}
                         <Modal
                           show={this.state.show}
                           onHide={() => this.SetShow(false, "")}
@@ -371,7 +371,7 @@ class templates extends Component {
 
 const mapStateToProps = (state) => ({
   user: state.user.user,
-  documents: state.user.user ? state.document.documents.filter(document => document.userId == state.user.user._id):null
+  documents: state.user.user ? state.document.documents.filter(document => document.userId == state.user.user._id) : null
 })
 
 export default connect(mapStateToProps, { getAllDocuments })(templates)
