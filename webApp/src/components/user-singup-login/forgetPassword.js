@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Button, Form,Alert,Col } from 'react-bootstrap';
 import {updatePassword} from '../../redux/actions/singinActions';
 import '../admin.css'
+import './document.css';
 class forgetPassword extends Component {
     state={
         email:"",
@@ -63,6 +64,7 @@ class forgetPassword extends Component {
             // this.
         }
         return (
+            <div className="main-form">
             <div className="body">
             <Form  className="container">
             {this.state.alert.open ? <Alert key="1" variant="success" className="container">
@@ -98,6 +100,7 @@ class forgetPassword extends Component {
                 </Col>
             </Form.Group>
             </Form>
+        </div>
         </div>
         )
     }

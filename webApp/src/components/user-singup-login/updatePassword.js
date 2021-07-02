@@ -5,6 +5,7 @@ import {addNewPassword} from '../../redux/actions/singinActions';
 import { Button, Form,Alert,Col } from 'react-bootstrap';
 import jwt from 'jsonwebtoken';
 import '../admin.css';
+import './document.css';
 class updatePassword extends Component {
     state = {
         user: {
@@ -123,6 +124,7 @@ class updatePassword extends Component {
 
         }
         return (
+            <div className="main-form">
             <div className="body">
             <Form  className="container">
                 {this.state.alert.open ? <Alert key="1" variant="success" className="container">
@@ -163,6 +165,7 @@ class updatePassword extends Component {
                     </Col>
                 </Form.Group>
             </Form>
+        </div>
         </div>
         )
     }
