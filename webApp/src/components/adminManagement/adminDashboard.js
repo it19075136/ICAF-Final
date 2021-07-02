@@ -69,7 +69,10 @@ class adminDashboard extends Component {
         values.status = 'APPROVED';
         postDocumentApprove(values);
         this.setShow(false, []);
-        window.location.reload();
+        setTimeout(() => {
+            window.location.reload();
+        },3000)
+       
 
 
     }
