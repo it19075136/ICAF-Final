@@ -45,17 +45,23 @@ router.post('/getUser',(req,res)=>{
     getUsetByEmailAndPassword(req.body).then(user=>{
         console.log('in router get');
         console.log(user);
-        const token = jsonwebtoken.sign({
-            _id:user._id,
-            name :user.name,
-            email : user.email,
-            gender : user.gender,
-            type : user.type,
-            phoneNumber :user.phoneNumber,
-        },"jwtSecret")
-        const password = user.password;
-        console.log('in router get');
-        res.json({token,password});
+        if(user ===null){
+            res.json(null);
+        }
+        else{
+            const token = jsonwebtoken.sign({
+                _id:user._id,
+                name :user.name,
+                email : user.email,
+                gender : user.gender,
+                type : user.type,
+                phoneNumber :user.phoneNumber,
+            },"jwtSecret")
+            const password = user.password;
+            console.log('in router get');
+            res.json({token,password});
+        }
+        
         
     }).catch(err=>{
         console.log('err pasindu');
@@ -98,16 +104,21 @@ router.post('/getCode',(req,res)=>{
     console.log('router post');
     console.log(req.body);
     getEmailAndPassCode(req.body.email).then(details=>{
-        console.log('router post in getEmail')
-        const token = jsonwebtoken.sign({
-            _id:details._id,
-            email : details.email,
-            code:details.code
-        },"jwtSecret")
-        res.json({token});
+        if(details._id){
+            console.log('router post in getEmail')
+            const token = jsonwebtoken.sign({
+                _id:details._id,
+                email : details.email,
+                code:details.code
+            },"jwtSecret")
+            res.json({token});
+        }
+        res.json(null)
+       
     }).catch((err)=>{
         console.log('err');
         console.log(err);
+        res.json(null)
     })
 })
 // router.put('/updatePassword',(req,res)=>{
