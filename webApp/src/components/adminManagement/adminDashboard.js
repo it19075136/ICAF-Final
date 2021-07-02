@@ -42,6 +42,7 @@ class adminDashboard extends Component {
     }
 
     setShow(data, info, type, status) {
+        console.log('info: ', info);
         this.setState({
             modalData: info,
             show: data
@@ -75,6 +76,7 @@ class adminDashboard extends Component {
 
     render() {
         const { docs, show, fullscreen, modalData, showMiniModal, modalUrl } = this.state;
+        console.log('modalData: ', modalData);
         const { documents, users } = this.props.admin;
 
             const filteredArray = documents.map((d) => ({
@@ -126,7 +128,7 @@ class adminDashboard extends Component {
                 // dialogClassName="modal-style-custom"
                 >
                     <Modal.Header closeButton>
-                        <Modal.Title>Modal</Modal.Title>
+                        <Modal.Title>Documents</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
                         <Table striped bordered hover>
@@ -144,7 +146,7 @@ class adminDashboard extends Component {
                                 {modalData.length !== 0 ? modalData.map(e =>
 
                                     <tr>
-                                        <td>{e.name[0] !== null ? e.name[0] : 'No Name'}</td>
+                                        <td>{e.name.find(i => i ? true : false)}</td>
                                         <td>{e.status}</td>
                                         <td>{e.type}</td>
                                         <td>
