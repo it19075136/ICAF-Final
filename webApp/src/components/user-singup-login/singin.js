@@ -47,9 +47,12 @@ class singin extends Component {
                     })
                 },1000) 
                 console.log(res.type,this.state.user.type);
-                if( res.type === 'ADMIN'){
+                if( res.type == 'ADMIN' || res.type == "REVIEWER"){
                     window.location.href='/admin/dashboard';
-                }else{
+                }
+                else if(res.type == 'EDITOR')
+                window.location.href='/workshops';
+                else{
                     window.location.href='/';
                 }
                 
