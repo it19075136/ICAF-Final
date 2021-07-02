@@ -19,7 +19,7 @@ export const postUser=(user)=> dispatch=>{
             }
             console.log('decode token userRespond',userResponds);
             console.log('send details to redux',userDetails)
-            localStorage.setItem('user',token);
+            // localStorage.setItem('user',token);
             dispatch({type:'ADD_USER',payload:userDetails})
             resolve(res.data);
         }
