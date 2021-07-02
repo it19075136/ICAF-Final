@@ -5,7 +5,7 @@ export const postUser=(user)=> dispatch=>{
 
    return  new Promise ((resolve,reject)=>{
        user.password = hashPassword.generate(user.password);
-    axios.post('http://localhost:5000/user/add',user).then(res=>{
+    axios.post('https://icaf-rest.herokuapp.com/user/add',user).then(res=>{
         const token = res.data;
         if(token){
             const userResponds =jwt.decode(token);
