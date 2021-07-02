@@ -9,7 +9,7 @@ function adminSideNav(props) {
   console.log(props.user)
   return (
     <div>
-      {props.user && props.user.type == "ADMIN" ? <div className="sideSection">
+      {props.user && (props.user.type == "ADMIN" || props.user.type == "EDITOR" || props.user.type == "REVIEWER") ? <div className="sideSection">
         <Navigation
           className="select-nav"
           activeItemId={window.location.pathname}
@@ -23,12 +23,12 @@ function adminSideNav(props) {
               window.location.href = itemId
           }}
           items={[
-            {
+            props.user && (props.user.type == "ADMIN" || props.user.type == "REVIEWER")? {
               title: "Dashboard",
               itemId: "/admin/dashboard"
               // Optional
               //   elemBefore: () => <Icon name="coffee" />
-            },
+            }:{},
             {
               title: "Submission",
               itemId: "/submission",
