@@ -4,7 +4,7 @@ import { Button, Form, Col, Alert } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { postUser } from '../../redux/actions/singupActions'
 import '../admin.css'
-import './document.css';
+import '../documentManagement/document.css';
 import jwt from 'jsonwebtoken';
 
 class singup extends Component {

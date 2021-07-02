@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Button, Form,Alert,Col } from 'react-bootstrap';
 import {updatePassword} from '../../redux/actions/singinActions';
 import '../admin.css'
-import './document.css';
+import '../documentManagement/document.css';
 class forgetPassword extends Component {
     state={
         email:"",

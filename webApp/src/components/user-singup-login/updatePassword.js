@@ -5,7 +5,7 @@ import {addNewPassword} from '../../redux/actions/singinActions';
 import { Button, Form,Alert,Col } from 'react-bootstrap';
 import jwt from 'jsonwebtoken';
 import '../admin.css';
-import './document.css';
+import '../documentManagement/document.css';
 class updatePassword extends Component {
     state = {
         user: {

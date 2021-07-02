@@ -4,7 +4,7 @@ import { Button, Form, Alert, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { findUser } from '../../redux/actions/singinActions'
 import '../admin.css'
-import './document.css';
+import '../documentManagement/document.css';
 class singin extends Component {
     state = {
         user: {
