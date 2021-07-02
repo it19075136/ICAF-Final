@@ -51,7 +51,7 @@ class viewWorkshop extends Component {
         const handleChange = (e) => {
             this.setState({
                 ...this.state,
-                submission: { ...this.state.submission, [e.target.name]: e.target.value }
+                workshop: { ...this.state.workshop, [e.target.name]: e.target.value }
             })
 
         }
