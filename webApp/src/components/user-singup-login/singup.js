@@ -42,6 +42,7 @@ class singup extends Component {
             console.log(this.state);
             console.log(this.state.user);
             if (this.state.user.name === "" || this.state.user.email === "" || this.state.user.type === "" || this.state.user.phoneNumber === "" || this.state.user.password === "" || !this.state.user.email.includes("@") || this.state.user.gender === "") {
+                console.log('full fill');
                 this.setState({
                     ...this.state,
                     alert: { ...this.state.alert, open: true, text: "fill all the details" }
@@ -54,6 +55,7 @@ class singup extends Component {
                 }, 6000)
             } //checking if any field is empty
             else if (this.state.user.password !== this.state.originalPassword) {
+                console.log('full password');
                 this.setState({
                     ...this.state,
                     alert: { ...this.state.alert, open: true, text: "password are deferent" }
@@ -66,6 +68,7 @@ class singup extends Component {
                 }, 6000)
             }
             else {
+                console.log('in else');
                 this.props.postUser(this.state.user).then(res => {
                     console.log('inside postuser action in singup component');
                    

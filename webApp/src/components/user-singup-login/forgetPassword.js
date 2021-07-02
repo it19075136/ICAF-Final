@@ -23,13 +23,41 @@ class forgetPassword extends Component {
             console.log('in in in');
             e.preventDefault();
             this.props.updatePassword(this.state.email).then((res)=>{
-                console.log('in in');
+                console.log(res);
+                if(res._id){
+                    console.log('in in');
                     // if(res.data){
                         // console.log(res);
                         // localStorage.setItem('updatePasswordDetails',res.data);
                         window.location.href='/updatePassword';
                     // }
+                }
+                else{
+                    console.log('in in');
+                    this.setState({
+                        ...this.state,       
+                        alert:{...this.state.alert,open:true,text:"no such a email"}
+                    })
+                    setTimeout(()=>{
+                        this.setState({
+                            ...this.state,
+                            alert:{...this.state.alert,open:false,text:"login unsuccessfull"}
+                        })
+                    },1000) 
+                }
+                
+               
             }).catch((err)=>{
+                this.setState({
+                    ...this.state,       
+                    alert:{...this.state.alert,open:true,text:"no such a email"}
+                })
+                setTimeout(()=>{
+                    this.setState({
+                        ...this.state,
+                        alert:{...this.state.alert,open:false,text:"login unsuccessfull"}
+                    })
+                },1000) 
                 console.log(err);
             })
             // this.

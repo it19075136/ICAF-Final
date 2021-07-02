@@ -98,15 +98,17 @@ var nodemailer = require('nodemailer');
        
      }).catch((err)=>{
       console.log('in getUsetByEmailAndPassword err');
-       reject(err);
+       resolve(err);
      })
    })
  }
  function getEmailAndPassCode(emails){
    return new Promise((resolve,reject)=>{
     console.log('in getEmailAndPassCode');
+    console.log(emails)
     User.findOne({email:emails}).then(user => {
-      console.log('in then in get email passcode')
+      console.log('in then in get email passcode');
+      console.log(user);
       if(user){
         console.log('in then in get email passcode in if')
         console.log(user);
@@ -154,12 +156,16 @@ var nodemailer = require('nodemailer');
         });
         
       }
+      else{
+        resolve('no such a user');
+      }
       // else{
       //   reject('email not in database')
       // } 
     }).catch((err)=>{
         console.log('erros in catch');
-        reject('erros')
+        resolve('erros');
+        console.log(err);
     })
 
    })

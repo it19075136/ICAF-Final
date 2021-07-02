@@ -35,23 +35,38 @@ class singin extends Component {
                 console.log('in in');
                 // const {token} = res;
                 // localStorage.setItem('user',token);
-                console.log(res);
-                this.setState({
-                    ...this.state,       
-                    alert:{...this.state.alert,open:true,text:"login successfull"}
-                })
-                setTimeout(()=>{
+                if(res._id){
+                    console.log(res);
                     this.setState({
-                        ...this.state,
-                        alert:{...this.state.alert,open:false,text:"login unsuccessfull"}
+                        ...this.state,       
+                        alert:{...this.state.alert,open:true,text:"login successfull"}
                     })
-                },1000) 
-                console.log(res.type,this.state.user.type);
-                if( res.type === 'ADMIN'){
-                    window.location.href='/admin/dashboard';
-                }else{
-                    window.location.href='/';
+                    setTimeout(()=>{
+                        this.setState({
+                            ...this.state,
+                            alert:{...this.state.alert,open:false,text:"login unsuccessfull"}
+                        })
+                    },1000) 
+                    console.log(res.type,this.state.user.type);
+                    if( res.type === 'ADMIN'){
+                        window.location.href='/admin/dashboard';
+                    }else{
+                        window.location.href='/';
+                    }
                 }
+                else{
+                    this.setState({
+                        ...this.state,       
+                        alert:{...this.state.alert,open:true,text:"login unsuccessfull"}
+                    })
+                    setTimeout(()=>{
+                        this.setState({
+                            ...this.state,
+                            alert:{...this.state.alert,open:false,text:"login unsuccessfull"}
+                        })
+                    },1000) 
+                }
+              
                 
             }).catch((err)=>{
                 this.setState({

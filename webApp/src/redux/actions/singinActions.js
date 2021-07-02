@@ -33,12 +33,13 @@ export const  findUser=(user)=>dispatch=>{
             }
             else{
                 console.log('in else');
+                resolve('err');
             }
             // reject('err')
         }).catch((err)=>{
             console.log('err');
             console.log(err);
-            reject('error')
+            resolve('error')
         })
     }) 
     
@@ -51,13 +52,20 @@ export const updatePassword=(email)=>dispatch=>{
         }
         axios.post('http://localhost:5000/user/getCode',user).then((res)=>{
             //localstorage ekati reducx ekati danna oneda
-            const {token} =res.data;  
+            console.log('email');
+            console.log(res);
+          if(res.data){ 
+              const {token} =res.data;  
             localStorage.setItem('updatePasswordDetails',token);
-        //    const  =jwt.decode(details);
+           const details =jwt.decode(token);
         //     dispatch({type:'ADD_USER',payload:res.data});
             console.log('action axios');
-            console.log(token);
-            resolve(token)
+            console.log(details);
+
+            resolve(details)
+        }
+        console.log('email');
+        resolve('err');
         }).catch((err)=>{
             reject(err)
         })
@@ -72,7 +80,7 @@ export const addNewPassword=(user)=>dispatch=>{
             console.log('in post');
             const {token} =res.data;    
         if(token){
-            localStorage.setItem('user',token);
+            // localStorage.setItem('user',token);
             const userResponds = jwt.decode(token);
             const userDetails ={
                 _id:userResponds._id,
