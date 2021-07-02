@@ -4,6 +4,8 @@ import { Button, Form, Col, Alert } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { postUser } from '../../redux/actions/singupActions'
 import '../admin.css'
+import jwt from 'jsonwebtoken';
+
 class singup extends Component {
     state = {
         user: {
@@ -69,7 +71,7 @@ class singup extends Component {
                 this.props.postUser(this.state.user).then(res => {
                     console.log('inside postuser action in singup component');
                    
-                        console.log('Record added successfully!')
+                        console.log(console.log(res))
                         this.setState({
                             ...this.state,
                             alert: { ...this.state.alert, open: true, text: "Record added successfully!" }
@@ -80,7 +82,7 @@ class singup extends Component {
                                 alert: { ...this.state.alert, open: false, text: "Record added successfully!" }
                             })
                         }, 6000)
-                        window.location.href='/singin';
+                        window.location.href='/';
                     console.log(res)
                 }).catch((err) => {
 

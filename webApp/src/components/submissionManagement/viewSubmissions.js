@@ -8,6 +8,7 @@ import '../admin.css'
 import '../submissionManagement/submission.css'
 import { getAllSubmissions, deleteSubmission, updateSubmission } from '../../redux/actions/submissionActions'
 import { getAllConference } from '../../redux/actions/conferenceActions'
+import CusAlert from '../../utils/alert';
 
 class viewSubmissions extends Component {
 
@@ -22,7 +23,8 @@ class viewSubmissions extends Component {
         show: false,
         alert: {
             open: false,
-            openError: false
+            result: 'success',
+            message: null
         }
     }
 
@@ -42,13 +44,13 @@ class viewSubmissions extends Component {
             e.preventDefault();
             console.log(this.state.submission);
             this.props.updateSubmission(this.state.submission).then((res) => {
-                res ? this.setState({ ...this.state, alert: { ...this.state.alert, open: true }, show: false }, () => {
+                res ? this.setState({ ...this.state, alert: { ...this.state.alert, open: true, result: 'success' }, show: false }, () => {
                     setTimeout(() => {
-                        this.setState({ ...this.state, alert: { ...this.state.alert, open: false } })
+                        this.setState({ ...this.state, alert: { ...this.state.alert, open: false, message: null } })
                     }, 1500)
-                }) : this.setState({ ...this.state, alert: { ...this.state.alert, openError: true }, show: false }, () => {
+                }) : this.setState({ ...this.state, alert: { ...this.state.alert, open: true, result: 'danger' }, show: false }, () => {
                     setTimeout(() => {
-                        this.setState({ ...this.state, alert: { ...this.state.alert, openError: false } })
+                        this.setState({ ...this.state, alert: { ...this.state.alert, open: false, message: null } })
                     }, 1500)
                 })
             }).catch((err) => {
@@ -68,13 +70,13 @@ class viewSubmissions extends Component {
         const handleDelete = (id) => {
             this.props.deleteSubmission(id).then((res) => {
                 console.log(res);
-                res ? this.setState({ ...this.state, alert: { ...this.state.alert, open: true } }, () => {
+                res && res != 'documents exist'? this.setState({ ...this.state, alert: { ...this.state.alert, open: true,result: 'success' } }, () => {
                     setTimeout(() => {
                         this.setState({ ...this.state, alert: { ...this.state.alert, open: false } })
                     }, 1500)
-                }) : this.setState({ ...this.state, alert: { ...this.state.alert, openError: true } }, () => {
+                }) : this.setState({ ...this.state, alert: { ...this.state.alert, open: true, result: 'danger', message: res == 'documents exist' ? 'Deletion failed,Documents already exist for the submission topic':null  } }, () => {
                     setTimeout(() => {
-                        this.setState({ ...this.state, alert: { ...this.state.alert, openError: false } })
+                        this.setState({ ...this.state, alert: { ...this.state.alert, open: false } })
                     }, 1500)
                 })
             }).catch((err) => {
@@ -86,12 +88,7 @@ class viewSubmissions extends Component {
             <div className="body">
                 <Jumbotron className="main">
                     <h1>All submission topics</h1>
-                    {this.state.alert.open ? <Alert key="1" variant="success" className="container">
-                        Action successful!
-                    </Alert> : (null)}
-                    {this.state.alert.openError ? <Alert key="1" variant="error" className="container">
-                        Action failed!
-                    </Alert> : (null)}
+                    {this.state.alert.open ? <CusAlert result={this.state.alert.result} message={this.state.alert.message} /> : (null)}
                     <Table striped bordered hover>
                         <thead>
                             <tr>
