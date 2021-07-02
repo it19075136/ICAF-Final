@@ -2,7 +2,7 @@ import axios from 'axios';
 import { GET_ALL_WORKSHOPS, ADD_WORKSHOP, UPDATE_WORKSHOP, UPDATE_WORKSHOPBY_ID, DELETE_WORKSHOP } from '../constants';
 
 export const getAllWorkshops = () => dispatch => {
-    axios.get('http://localhost:5000/workshop')
+    axios.get('https://icaf-rest.herokuapp.com/workshop')
     .then(res => {
         dispatch({
             type: GET_ALL_WORKSHOPS,
@@ -12,7 +12,7 @@ export const getAllWorkshops = () => dispatch => {
 }
 
 export const addWorkshop = (payload) => dispatch => {
-    axios.post('http://localhost:5000/workshop/', payload)
+    axios.post('https://icaf-rest.herokuapp.com/workshop/', payload)
     .then(res => {
         dispatch({
             type: ADD_WORKSHOP,
@@ -22,7 +22,7 @@ export const addWorkshop = (payload) => dispatch => {
 }
 
 export function updateWorkshopWorkforce(id,values){
-    axios.post(`http://localhost:5000/workshop/update/workforce/${id}`, values)
+    axios.post(`https://icaf-rest.herokuapp.com/workshop/update/workforce/${id}`, values)
             .then(res => {
                 console.log('res: ', res);
             }).catch((err) => {
@@ -32,7 +32,7 @@ export function updateWorkshopWorkforce(id,values){
 
 export const updateWorkshopById = (payload,id) => dispatch => {
     return new Promise((resolve, reject) => {
-        axios.put(`http://localhost:5000/workshop/${id}`, payload).then((res) => {
+        axios.put(`https://icaf-rest.herokuapp.com/workshop/${id}`, payload).then((res) => {
             if(res.status == 200){
                 dispatch({
                     type: UPDATE_WORKSHOPBY_ID,
@@ -48,7 +48,7 @@ export const updateWorkshopById = (payload,id) => dispatch => {
 
 export const deleteWorkshop = (id) => dispatch => {
     return new Promise((resolve, reject) => {
-        axios.delete(`http://localhost:5000/workshop/${id}`).then((res) => {
+        axios.delete(`https://icaf-rest.herokuapp.com/workshop/${id}`).then((res) => {
             if (res.status == 200) {
                 dispatch({
                     type: DELETE_WORKSHOP,
