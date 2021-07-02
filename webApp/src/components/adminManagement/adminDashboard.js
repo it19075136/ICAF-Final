@@ -103,6 +103,7 @@ class adminDashboard extends Component {
         let workshopArrayPending = workshopArray.filter((e) => {
             return e.type == 'W_PROPOSAL' && e.status == 'PENDING'
         })
+        console.log('workshopArrayPending: ', workshopArrayPending);
 
         let workshopArrayApproved = workshopArray.filter((e) => {
             return e.type == 'W_PROPOSAL' && e.status == 'APPROVED'
@@ -203,7 +204,7 @@ class adminDashboard extends Component {
                                                 workshopArrayPending.length
                                             }
                                         </Card.Text>
-                                        <Button variant="primary" onClick={() => this.setShow(true, workshopArrayPending, 'W_PROPOSAL', 'PENDING')}>Go somewhere</Button>
+                                        <Button variant="primary" onClick={() => this.setShow(true, workshopArrayPending, 'W_PROPOSAL', 'PENDING')}>View Documents</Button>
                                     </Card.Body>
                                     {/* <Card.Footer className="text-muted">2 days ago</Card.Footer> */}
                                 </Card>
@@ -218,7 +219,7 @@ class adminDashboard extends Component {
                                                 workshopArrayApproved.length
                                             }
                                         </Card.Text>
-                                        <Button variant="primary" onClick={() => this.setShow(true, workshopArrayApproved, 'W_PROPOSAL', 'APPROVED')}>Go somewhere</Button>
+                                        <Button variant="primary" onClick={() => this.setShow(true, workshopArrayApproved, 'W_PROPOSAL', 'APPROVED')}>View Documents</Button>
                                     </Card.Body>
                                     {/* <Card.Footer className="text-muted">2 days ago</Card.Footer> */}
                                 </Card>
@@ -230,12 +231,13 @@ class adminDashboard extends Component {
                                     <Card.Header>Research Papers</Card.Header>
                                     <Card.Body>
                                         <Card.Title>Pending</Card.Title>
-                                        <Card.Text className="card-text-style">
-                                            {
+                                        <Card.Text >
+                                            <p className="card-text-style">{
                                                 researchArrayPending.length
                                             }
+                                            </p>
                                         </Card.Text>
-                                        <Button variant="primary" onClick={() => this.setShow(true, researchArrayPending, 'RESEARCH', 'PENDING')}>Go somewhere</Button>
+                                        <Button variant="primary" onClick={() => this.setShow(true, researchArrayPending, 'RESEARCH', 'PENDING')}>View Documents</Button>
                                     </Card.Body>
                                     {/* <Card.Footer className="text-muted">2 days ago</Card.Footer> */}
                                 </Card>
@@ -250,7 +252,7 @@ class adminDashboard extends Component {
                                                 researchArrayApproved.length
                                             }
                                         </Card.Text>
-                                        <Button variant="primary" onClick={() => this.setShow(true, researchArrayApproved, 'RESEARCH', 'APPROVED')}>Go somewhere</Button>
+                                        <Button variant="primary" onClick={() => this.setShow(true, researchArrayApproved, 'RESEARCH', 'APPROVED')}>View Documents</Button>
                                     </Card.Body>
                                     {/* <Card.Footer className="text-muted">2 days ago</Card.Footer> */}
                                 </Card>
