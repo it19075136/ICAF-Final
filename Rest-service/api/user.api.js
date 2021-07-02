@@ -57,28 +57,28 @@ var nodemailer = require('nodemailer');
    });
  }
 
- function updateUserById(body) {
+ function updateUserById(id,body) {
    console.log("body: ", body);
 
    return new Promise((resolve, reject) => {
-     User.findByIdAndUpdate(body._id).then((user) => {
+     User.findByIdAndUpdate(id,body).then((user) => {
       //  (user.name = body.name),
       //    (user.email = body.email),
-         (user.password = body.password)
+        //  (user.password = body.password)
         //  (user.gender = body.gender),
         //  (user.type = body.type),
         //  (user.phoneNumber = Number(body.phoneNumber));
 
-       user
-         .save()
-         .then((user) => {
-          console.log('in then');
+      //  user
+      //    .save()
+      //    .then((user) => {
+      //     console.log('in then');
            resolve(user);
          })
          .catch((err) => {
           console.log('err');
            reject(err);
-         });
+        //  });
      });
    });
  }
