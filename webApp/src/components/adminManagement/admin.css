@@ -5,9 +5,9 @@
 
 .card-width{
     width: 50% !important;
-    min-height: fit-content !important;
+    /* min-height: fit-content !important;
     height: fit-content !important;
-    max-height: fit-content !important;
+    max-height: fit-content !important; */
     background-color: #c1d9d4 !important;
 }
 
@@ -27,7 +27,7 @@
     font-size: 83px !important;
     color: rgb(204, 121, 13) !important;
     align-items: center !important;
-    margin-left: 60px !important;
+    /* margin-left: 60px !important; */
 }
 
 .modal-style-custom{
