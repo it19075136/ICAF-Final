@@ -124,7 +124,7 @@ class updatePassword extends Component {
         }
         return (
             <div className="body">
-            <Form>
+            <Form  className="container">
                 {this.state.alert.open ? <Alert key="1" variant="success" className="container">
                     {this.state.alert.text}
                 </Alert> : (null)}
