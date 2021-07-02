@@ -8,8 +8,9 @@ const workshopRouter = require('./routes/workshopRoutes');
 const documentRouter = require('./routes/documentRoutes');
 const paymentRouter = require('./routes/paymentRoutes');
 const submissionRouter = require('./routes/submissionRouter');
+const DBkey = require('./config/dbConfig')
 
-mongoose.connect(process.env.DB_KEY||'&w=majority', {
+mongoose.connect(DBkey, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true
