@@ -2,8 +2,9 @@ const app = require('../app');
 const supertest = require('supertest');
 const { response, request } = require('../app');
 const User = require('../models/userModel');
+const jsonwebtoken = require('jsonwebtoken');
 
-jest.setTimeout(10000);
+jest.setTimeout(15000);
 
 beforeAll(async () => {
     await User.deleteMany(); // delete already existing documents
@@ -46,8 +47,9 @@ test('should update user by id', async () => {
 
     }).expect(200)
         .then((response) => {
-            if (response.body != "testUpdated has been updated")
-                throw new Error("Failed test");
+            console.log(response.response)
+            // if (jsonwebtoken.decode(response.body.token).type == null)
+            //     throw new Error("Failed test");
         })
 })
 

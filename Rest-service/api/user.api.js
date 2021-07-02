@@ -57,28 +57,28 @@ var nodemailer = require('nodemailer');
    });
  }
 
- function updateUserById(body) {
+ function updateUserById(id,body) {
    console.log("body: ", body);
 
    return new Promise((resolve, reject) => {
-     User.findByIdAndUpdate(body._id).then((user) => {
+     User.findByIdAndUpdate(id,body).then((user) => {
       //  (user.name = body.name),
       //    (user.email = body.email),
-         (user.password = body.password)
+        //  (user.password = body.password)
         //  (user.gender = body.gender),
         //  (user.type = body.type),
         //  (user.phoneNumber = Number(body.phoneNumber));
 
-       user
-         .save()
-         .then((user) => {
-          console.log('in then');
+      //  user
+      //    .save()
+      //    .then((user) => {
+      //     console.log('in then');
            resolve(user);
          })
          .catch((err) => {
           console.log('err');
            reject(err);
-         });
+        //  });
      });
    });
  }
@@ -98,15 +98,17 @@ var nodemailer = require('nodemailer');
        
      }).catch((err)=>{
       console.log('in getUsetByEmailAndPassword err');
-       reject(err);
+       resolve(err);
      })
    })
  }
  function getEmailAndPassCode(emails){
    return new Promise((resolve,reject)=>{
     console.log('in getEmailAndPassCode');
+    console.log(emails)
     User.findOne({email:emails}).then(user => {
-      console.log('in then in get email passcode')
+      console.log('in then in get email passcode');
+      console.log(user);
       if(user){
         console.log('in then in get email passcode in if')
         console.log(user);
@@ -154,12 +156,16 @@ var nodemailer = require('nodemailer');
         });
         
       }
+      else{
+        resolve('no such a user');
+      }
       // else{
       //   reject('email not in database')
       // } 
     }).catch((err)=>{
         console.log('erros in catch');
-        reject('erros')
+        resolve('erros');
+        console.log(err);
     })
 
    })

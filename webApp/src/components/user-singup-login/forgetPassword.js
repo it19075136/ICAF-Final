@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Button, Form,Alert,Col } from 'react-bootstrap';
 import {updatePassword} from '../../redux/actions/singinActions';
 import '../admin.css'
+import '../documentManagement/document.css';
 class forgetPassword extends Component {
     state={
         email:"",
@@ -23,20 +24,49 @@ class forgetPassword extends Component {
             console.log('in in in');
             e.preventDefault();
             this.props.updatePassword(this.state.email).then((res)=>{
-                console.log('in in');
+                console.log(res);
+                if(res._id){
+                    console.log('in in');
                     // if(res.data){
                         // console.log(res);
                         // localStorage.setItem('updatePasswordDetails',res.data);
                         window.location.href='/updatePassword';
                     // }
+                }
+                else{
+                    console.log('in in');
+                    this.setState({
+                        ...this.state,       
+                        alert:{...this.state.alert,open:true,text:"no such a email"}
+                    })
+                    setTimeout(()=>{
+                        this.setState({
+                            ...this.state,
+                            alert:{...this.state.alert,open:false,text:"login unsuccessfull"}
+                        })
+                    },1000) 
+                }
+                
+               
             }).catch((err)=>{
+                this.setState({
+                    ...this.state,       
+                    alert:{...this.state.alert,open:true,text:"no such a email"}
+                })
+                setTimeout(()=>{
+                    this.setState({
+                        ...this.state,
+                        alert:{...this.state.alert,open:false,text:"login unsuccessfull"}
+                    })
+                },1000) 
                 console.log(err);
             })
             // this.
         }
         return (
+            <div className="main-form">
             <div className="body">
-            <Form >
+            <Form  className="container">
             {this.state.alert.open ? <Alert key="1" variant="success" className="container">
             {this.state.alert.text}
         </Alert> : (null)}
@@ -70,6 +100,7 @@ class forgetPassword extends Component {
                 </Col>
             </Form.Group>
             </Form>
+        </div>
         </div>
         )
     }

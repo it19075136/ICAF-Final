@@ -25,19 +25,19 @@ class ConferenceList extends Component {
                             <section className="black">
                                 <div className="wrap">
                                     <h3>{conference.conferenceName}</h3>
-                                    <p>{conference.conferenceDescription}</p>
+                                    <p className="p-style-custom">{conference.conferenceDescription}</p>
                                     <div className="separator01"></div>
-                                    <p>Start Date: {conference.startDate.split('T')[0]} | End Date: {conference.endDate.split('T')[0]} | Location: {conference.conferenceVenue}</p>
+                                    <p className="p-style-custom">Start Date: {conference.startDate.split('T')[0]} | End Date: {conference.endDate.split('T')[0]} | Location: {conference.conferenceVenue}</p>
                                     <h4>Speakers</h4>
                                     {conference.keynoteSpeaker.map(speaker => {
                                         return (
-                                            <p><i class="fas fa-star-of-life"></i> {speaker.speakerName} - {speaker.speakerDesignation}</p>
+                                            <p className="p-style-custom"><i class="fas fa-star-of-life"></i> {speaker.speakerName} - {speaker.speakerDesignation}</p>
                                         )
                                     })}
                                     <h4>Tracks</h4>
                                     {conference.tracks.map(track => {
                                         return (
-                                            <p><i class="fas fa-star-of-life"></i> {track.trackName} -{track.trackDescription}</p>
+                                            <p className="p-style-custom"><i class="fas fa-star-of-life"></i> {track.trackName} -{track.trackDescription}</p>
                                         )
                                     })}
                                 </div>
@@ -45,10 +45,10 @@ class ConferenceList extends Component {
 
                             <section className="white">
                                 <div className="wrap">
-                                    <p>“All our dreams can come true, if we have the courage to pursue them.” – Walt Disney</p>
+                                    <p className="p-style-custom">“All our dreams can come true, if we have the courage to pursue them.” – Walt Disney</p>
                                     <div className="separator02"></div>
                                     <br />
-                                    <p>“It is only when we take chances, when our lives improve. The initial and the most difficult risk that we need to take is to become honest. —Walter Anderson</p>
+                                    <p className="p-style-custom">“It is only when we take chances, when our lives improve. The initial and the most difficult risk that we need to take is to become honest. —Walter Anderson</p>
                                 </div>
                             </section>
                         </div>

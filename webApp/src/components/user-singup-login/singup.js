@@ -4,6 +4,7 @@ import { Button, Form, Col, Alert } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { postUser } from '../../redux/actions/singupActions'
 import '../admin.css'
+import '../documentManagement/document.css';
 import jwt from 'jsonwebtoken';
 
 class singup extends Component {
@@ -44,6 +45,7 @@ class singup extends Component {
             console.log(this.state);
             console.log(this.state.user);
             if (this.state.user.name === "" || this.state.user.email === "" || this.state.user.type === "" || this.state.user.phoneNumber === "" || this.state.user.password === "" || !this.state.user.email.includes("@") || this.state.user.gender === "") {
+                console.log('full fill');
                 this.setState({
                     ...this.state,
                     alert: { ...this.state.alert, open: true, text: "fill all the details" }
@@ -56,6 +58,7 @@ class singup extends Component {
                 }, 6000)
             } //checking if any field is empty
             else if (this.state.user.password !== this.state.originalPassword) {
+                console.log('full password');
                 this.setState({
                     ...this.state,
                     alert: { ...this.state.alert, open: true, text: "password are deferent" }
@@ -68,6 +71,7 @@ class singup extends Component {
                 }, 6000)
             }
             else {
+                console.log('in else');
                 this.props.postUser(this.state.user).then(res => {
                     console.log('inside postuser action in singup component');
                    
@@ -92,8 +96,9 @@ class singup extends Component {
 
         }
         return (
-            <div className="body">
-                <Form>
+            <div className="main-form">
+                <div className="body">
+                <Form  className="container">
                     {this.state.alert.open ? <Alert key="1" variant="success" className="container">
                         {this.state.alert.text}
                     </Alert> : (null)}
@@ -223,6 +228,7 @@ class singup extends Component {
                         </Col>
                     </Form.Group>
                 </Form>
+            </div>
             </div>
         )
     }
