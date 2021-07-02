@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_ALL_WORKSHOPS, ADD_WORKSHOP, UPDATE_WORKSHOP } from '../constants';
+import { GET_ALL_WORKSHOPS, ADD_WORKSHOP, UPDATE_WORKSHOP, UPDATE_WORKSHOPBY_ID, DELETE_WORKSHOP } from '../constants';
 
 export const getAllWorkshops = () => dispatch => {
     axios.get('http://localhost:5000/workshop')
@@ -28,4 +28,37 @@ export function updateWorkshopWorkforce(id,values){
             }).catch((err) => {
                 console.log(err);
             })
+}
+
+export const updateWorkshopById = (payload,id) => dispatch => {
+    return new Promise((resolve, reject) => {
+        axios.put(`http://localhost:5000/workshop/${id}`, payload).then((res) => {
+            if(res.status == 200){
+                dispatch({
+                    type: UPDATE_WORKSHOPBY_ID,
+                    payload: res.data
+                })
+                resolve(res.data)
+            }
+            else
+                resolve(res)
+        })
+    })
+}
+
+export const deleteWorkshop = (id) => dispatch => {
+    return new Promise((resolve, reject) => {
+        axios.delete(`http://localhost:5000/workshop/${id}`).then((res) => {
+            if (res.status == 200) {
+                dispatch({
+                    type: DELETE_WORKSHOP,
+                    payload: id
+                })
+                resolve(id)
+            }
+            else
+                resolve(res)
+        })
+    })
+
 }

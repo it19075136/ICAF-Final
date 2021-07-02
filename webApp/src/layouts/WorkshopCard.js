@@ -41,7 +41,7 @@ class WorkshopCard extends Component {
                                                             <div className="card-body">
                                                                 <h4 className="card-title">{work.workshopName}</h4>
                                                                 <p className="card-text">{work.workshopDescription}</p>
-                                                                <button type="button" class="btn btn-primary" href="#">Read More</button>  
+                                                                <button type="button" class="btn btn-primary" href="#" onClick={() => window.location.href= "/viewWorkshops"}>Read More</button>  
                                                             </div>
                                                             
                                                         </div>
