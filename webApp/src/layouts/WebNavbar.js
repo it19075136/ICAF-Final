@@ -66,7 +66,7 @@ class WebNavbar extends Component {
                             })}
                         </ul>
                         {this.props.user == null || this.props.user == {} ?
-                            <div>
+                            <div className = "user-actions">
                                 <div className="btn-list">
                                     <Button onclick={handleSingup}>Sign Up</Button>
                                 </div>
