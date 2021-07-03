@@ -4,6 +4,7 @@ import { Button, Form, Col, Alert } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { postUser } from '../../redux/actions/singupActions'
 import '../admin.css'
+import '../documentManagement/document.css';
 import jwt from 'jsonwebtoken';
 
 class singup extends Component {
@@ -95,8 +96,9 @@ class singup extends Component {
 
         }
         return (
-            <div className="body">
-                <Form>
+            <div className="main-form">
+                <div className="body">
+                <Form  className="container">
                     {this.state.alert.open ? <Alert key="1" variant="success" className="container">
                         {this.state.alert.text}
                     </Alert> : (null)}
@@ -226,6 +228,7 @@ class singup extends Component {
                         </Col>
                     </Form.Group>
                 </Form>
+            </div>
             </div>
         )
     }
