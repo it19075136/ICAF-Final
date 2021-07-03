@@ -7,9 +7,15 @@ import './AdminSideNav.css'
 function adminSideNav(props) {
 
   console.log(props.user)
+
+  const validateEditor = () => {
+    if(props.user && (props.user.type != "EDITOR"))
+    return 
+  }
+
   return (
     <div>
-      {props.user && props.user.type == "ADMIN" ? <div className="sideSection">
+      {props.user && (props.user.type == "ADMIN" || props.user.type == "EDITOR" || props.user.type == "REVIEWER") ? <div className="sideSection">
         <Navigation
           className="select-nav"
           activeItemId={window.location.pathname}
@@ -23,7 +29,7 @@ function adminSideNav(props) {
               window.location.href = itemId
           }}
           items={[
-            {
+             {
               title: "Dashboard",
               itemId: "/admin/dashboard"
               // Optional
@@ -41,17 +47,16 @@ function adminSideNav(props) {
                   //   elemBefore: () => <Icon name="cloud-snow" />
                 }
               ]
-            },
-            {
+            },{
               title: "Conference",
-              itemId: "/conferences",
-              subNav: [
-                {
-                  title: "Add Conference",
-                  itemId: "/conference/add"
-                }
-              ]
-            },
+              itemId: "/conferences"
+            }
+              ,
+              {
+                title: "Add Conference",
+                itemId: "/conference/add"
+              }
+            ,
             {
               title: "Workshop",
               itemId: "/workshops",
@@ -74,7 +79,7 @@ function adminSideNav(props) {
                 title: "Login",
                 itemId: "/signIn"
               }
-          ]}
+          ].filter(item => props.user.type == "ADMIN" ? true : ((item.title == "Conference"  || item.title == "Dashboard") && (props.user.type == "EDITOR" || (props.user.type == "REVIEWER" && item.title == "Conference") )) || (props.user.type == "REVIEWER" && (item.title == "Add Conference" || item.title == "Submission" || item.title == "Workshop" || item.title == "Add Template")) ? false:true)}
         />
       </div> : null}
 

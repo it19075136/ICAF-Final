@@ -4,13 +4,13 @@ import axios from 'axios';
 export const addDocuments = (data) => dispatch => {
 
     return new Promise((resolve, reject) => {
-        axios.post('http://localhost:5000/document', data).then((res) => {
+        axios.post('https://icaf-rest.herokuapp.com/document', data).then((res) => {
             console.log(res);
             dispatch({
                 type: ADD_DOCUMENTS,
                 payload: data
             })
-            resolve(data)
+            resolve(res.data)
         }).catch((err) => {
             console.log(err);
             resolve(err)
@@ -28,7 +28,7 @@ export const setUploadInProgress = () => dispatch => {
 
 export const getAllDocuments = () => dispatch => {
 
-    axios.get('http://localhost:5000/document').then((res) => {
+    axios.get('https://icaf-rest.herokuapp.com/document').then((res) => {
         console.log(res.data);
         dispatch({
             type: ADD_DOCUMENTS,

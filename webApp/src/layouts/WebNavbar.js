@@ -48,7 +48,7 @@ class WebNavbar extends Component {
         console.log(this.props.user);
         return (
             <div>
-                {(this.props.user && this.props.user.type != "ADMIN") || this.props.user == null || this.props.user == {} ?
+                {(this.props.user && this.props.user.type != "ADMIN" && this.props.user.type != "EDITOR" && this.props.user.type != "REVIEWER" ) || this.props.user == null || this.props.user == {} ?
                     <nav className="NavbarItems">
                         <h1 className="navbar-logo">ICAF</h1>
                         <div className="menu-icon" onClick={this.handleClick}>
@@ -66,7 +66,7 @@ class WebNavbar extends Component {
                             })}
                         </ul>
                         {this.props.user == null || this.props.user == {} ?
-                            <div>
+                            <div className = "user-actions">
                                 <div className="btn-list">
                                     <Button onclick={handleSingup}>Sign Up</Button>
                                 </div>

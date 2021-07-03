@@ -25,7 +25,7 @@ function addDocument(payload){
                 resolve(err);
             }));
         }).catch((err)=>{
-            reject(err)
+            resolve(err)
         })
     })
 }
